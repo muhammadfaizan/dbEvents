@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/Dashboard">Dashboard</a></li>
+                <li class="active"><a href="#/Events">Events</a></li>
+                <li><a href="#/Circle">Circle</a></li>
+                <li><a href="#/Levels">Levels</a></li>
+                <li><a href="#/Settings">Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#/Events">All</a></li>
+                <li><a href="#/Events">Created</a></li>
+                <li><a href="#/Events">Invited</a></li>
+            </ul>
+            <div class="row" style="padding-top: 5px">
+                <div class="col-md-2 col-md-offset-10">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="open()">
+                            Create Event
+                            <span class="glyphicon glyphicon-th"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--further edited by maneri -->
+            <!-- modal-->
+            <div>
+                <script type="text/ng-template" id="myModalContent.html">
+                    <div class="modal-header">
+                        <h3>{{event.name}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <form name="newEventForm" role="form" class="col-md-12">
+                                <div class="row">
+
+                                <div class="col-md-7">
+                                <!--name -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="eventName">Event Name</label>
+                                            <input id="eventName" class="form-control" type="text" required ng-model="event.name" placeholder="Name of your Event...."/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<div class="row">-->
+
+                                <div class="row">
+                                <!-- datetime picker-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="eventDate">Event Date: </label>
+                                                    <p class="input-group" style="padding-top: 32px;">
+                                                        <input type="text" class="form-control" show-weeks="showWeeks" datepicker-popup="{{format}}" ng-model="event.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="dd-MMMM-yyyy"/>
+                                                    </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="eventTime">Event Time:</label>
+                                            <!-- timepciker -->
+                                            <div>
+                                                <div id="eventTime" ng-model="event.time" ng-change="changed()" style="display:inline-block;">
+                                                    <timepicker  hour-step="1" minute-step="30" show-meridian="true"></timepicker>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    <!-- -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="eventLocation">Event Location:</label>
+                                <input id="eventLocation" class="form-control" type="text" ng-model="event.location" placeholder="Address of Event...." />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="eventImageUrl"> Image:</label>
+                                <input id="eventImageUrl" class="form-control" type="url" ng-model="event.imageUrl" class="input-xlarge" placeholder="Url of image...."/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                            <img class="col-md-8" ng-src="{{event.imageUrl}}" src=""/>
+                    </div>
+
+                    </div>
+
+                    <!-- Friend List -->
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="person in FL">{{person.name}}</li>
+                        </ul>
+                    </div>
+
+                    </div>
+
+                    </form>
+
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok()">Save</button>
+                        <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+                    </div>
+                </script>
+
+
+                <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+            </div>
+            <!-- -->
+
+        </div>
+    </div>
+</div>
